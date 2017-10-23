@@ -14,8 +14,9 @@ module Arabic2english
       
        #check for the input value is numeric or not.
        #if not numeric then display a error message otherwise display the entered value in words.
+        fail 'Must be a numeric value!' if input_num.to_s.strip.empty?
         value = input_num.to_s unless input_num.instance_of? String
-        fail 'Must be a numeric Number!' if input_num.to_s.match(/^[0-9]*$/).nil?
+        fail 'Must be a numeric value!' if input_num.to_s.match(/^[0-9]*$/).nil?
         value = value.to_i
         fail 'Must be only 3 digits.' if value.to_s.length > 3
         numbers_to_words.each do |num, name|
@@ -42,10 +43,10 @@ module Arabic2english
               return input_num.to_words
             else
               #display message, if user entered more than 4 numbers
-                return "Must be only 3 Numbers."
+                return "Must be only 3 digits."
             end 
         else
-            return "Must be a numeric Number!"
+            return "Must be a numeric value!"
         end
     end
     
